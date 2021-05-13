@@ -1,0 +1,1 @@
+# fetch-os-name-dynamically-with-ansible
