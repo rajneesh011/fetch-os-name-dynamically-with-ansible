@@ -1,0 +1,20 @@
+- hosts: all
+  vars_files: 
+    - "./vars/{{ ansible_distribution }}.yml" 
+  tasks:
+       - debug:
+               msg: "./vars/{{  ansible_distribution  }}.yml" 
+       - name: "installing httpd software"
+         package: 
+                name: "{{ package_name  }}"
+                state: present
+
+       - name: copying the webpage
+         template:
+                 src: index.html
+                 dest: "{{ doc_root }}"
+
+       - name: starting httpd services 
+         service:
+                 name: "{{ service_name }}"
+                 state: started 
